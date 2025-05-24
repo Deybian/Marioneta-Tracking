@@ -38,7 +38,7 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    const pose = new Pose.Pose({
+    const pose = new Pose({
       locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`,
     });
 
@@ -69,7 +69,7 @@
       canvasCtx.restore();
     });
 
-    const camera = new Camera.Camera(videoElement, {
+    const camera = new Camera(videoElement, {
       onFrame: async () => {
         await pose.send({ image: videoElement });
       },
